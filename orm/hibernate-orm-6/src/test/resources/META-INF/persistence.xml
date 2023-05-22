@@ -7,15 +7,15 @@
 
         <description>Hibernate test case template Persistence Unit</description>
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-
+        <class>org.hibernate.bugs.CustomEntity</class>
+        <class>org.hibernate.bugs.CustomProjection</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
-
         <properties>
             <property name="hibernate.archive.autodetection" value="class, hbm"/>
 
-            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
-            <property name="hibernate.connection.driver_class" value="org.h2.Driver"/>
-            <property name="hibernate.connection.url" value="jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.connection.driver_class" value="org.testcontainers.jdbc.ContainerDatabaseDriver"/>
+            <property name="hibernate.connection.url" value="jdbc:tc:postgresql:14.3:///test?TC_DAEMON=true"/>
             <property name="hibernate.connection.username" value="sa"/>
 
             <property name="hibernate.connection.pool_size" value="5"/>
@@ -36,6 +36,7 @@
             <property name="jakarta.persistence.validation.mode" value="NONE"/>
             <property name="hibernate.service.allow_crawling" value="false"/>
             <property name="hibernate.session.events.log" value="true"/>
+
         </properties>
 
     </persistence-unit>
